@@ -1,13 +1,17 @@
 import { useClerk } from "@clerk/clerk-expo";
+import { Feather } from "@expo/vector-icons";
 import * as Linking from "expo-linking";
-import { Text, TouchableOpacity } from "react-native";
+import { Alert, TouchableOpacity } from "react-native";
 
 export const SignOutButton = () => {
   // Use `useClerk()` to access the `signOut()` function
   const { signOut } = useClerk();
-  const handleSignOut = async () => {
+  const handleSignOut = () => {
     try {
-      await signOut();
+      Alert.alert("Log-out", "Are you sure you want to log out?", [
+        { text: "Cancel", style: "cancel" },
+        { text: "Log out", style: "destructive", onPress: () => signOut() },
+      ]);
       // Redirect to your desired page
       Linking.openURL(Linking.createURL("/"));
     } catch (err) {
@@ -18,7 +22,7 @@ export const SignOutButton = () => {
   };
   return (
     <TouchableOpacity onPress={handleSignOut}>
-      <Text>Sign out</Text>
+      <Feather name="log-out" size={24} color={"#e0245e"} />
     </TouchableOpacity>
   );
 };

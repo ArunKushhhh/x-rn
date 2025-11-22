@@ -69,10 +69,10 @@ export default function Index() {
               {isLoading ? (
                 <ActivityIndicator size={"small"} color={"#000"} />
               ) : (
-                <View className="flex-row items-center justify-center">
+                <View className="flex-row items-center justify-center py-0.5">
                   <Image
                     source={require("@/assets/images/apple.png")}
-                    className="size-8 mr-3"
+                    className="size-8 mr-4"
                     resizeMode="contain"
                   />
                   <Text className="text-black font-medium  text-base">
